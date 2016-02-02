@@ -62,7 +62,7 @@ public class CountTwoTest {
     @Test
     public void testCountTwoAPerformance() {
         System.out.println("---- O(n) solution ----");
-        for (int i = 0; i < 10000000; i += 100000) {
+        for (int i = 0; i <= 10000000; i += 100000) {
             long startTime = System.currentTimeMillis();
             CountTwo.countTwo(i);
             long endTime = System.currentTimeMillis();
@@ -71,10 +71,10 @@ public class CountTwoTest {
         
         System.out.println();
         System.out.println("---- O(log n) solution ----");
-        for (int i = 0; i < 10000000; i += 100000) {
+        for (int i = 0; i <= 10000000; i += 100000) {
             long startTime = System.currentTimeMillis();
             CountTwo.countTwo2(i);
-            long endTime = System.currentTimeMillis();
+            long endTime = System.currentTimeMillis();;
             System.out.println("n=" + i + ": " + (endTime - startTime) + " ms");
         }
     }
