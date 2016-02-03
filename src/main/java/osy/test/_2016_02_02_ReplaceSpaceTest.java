@@ -2,13 +2,12 @@ package osy.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import osy.algorithm.CountTwo;
 import osy.algorithm.ReplaceSpace;
 
 /**
  * Created by maxwell on 2016-02-02.
  */
-public class ReplaceSpaceTest {
+public class _2016_02_02_ReplaceSpaceTest {
     @Test
     public void testReplaceSpace1() {
         String str = "";
