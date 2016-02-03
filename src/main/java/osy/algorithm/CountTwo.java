@@ -3,6 +3,7 @@ package osy.algorithm;
 /**
  * Created by maxwell on 2016-02-02.
  */
+// [0, n] 에 포함된 2의 개수 세기. Note: 22의 2는 2개로 세어야 함
 public class CountTwo {
     // O(n) solution
     public static int countTwo(int n) {

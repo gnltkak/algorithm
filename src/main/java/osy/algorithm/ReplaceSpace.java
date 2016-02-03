@@ -3,6 +3,8 @@ package osy.algorithm;
 /**
  * Created by maxwell on 2016-02-02.
  */
+// string 의 white space 를 모두 "%20" 으로 replace.
+// char[] 에는 result를 모두 담을만한 충분한 공간이 있다고 가정
 public class ReplaceSpace {
     public static void replaceSpace(char[] str, int strLength) {
         int resultLength = strLength;
