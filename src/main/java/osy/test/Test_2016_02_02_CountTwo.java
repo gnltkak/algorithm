@@ -6,7 +6,7 @@ import osy.algorithm._2016_02_02_CountTwo;
 /**
  * Created by maxwell on 2016-02-02.
  */
-public class _2016_02_02_CountTwoTest {
+public class Test_2016_02_02_CountTwo {
     @Test
     public void testCountTwoA1() {
         int n = 1;        

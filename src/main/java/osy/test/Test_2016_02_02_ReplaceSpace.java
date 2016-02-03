@@ -7,7 +7,7 @@ import osy.algorithm.ReplaceSpace;
 /**
  * Created by maxwell on 2016-02-02.
  */
-public class _2016_02_02_ReplaceSpaceTest {
+public class Test_2016_02_02_ReplaceSpace {
     @Test
     public void testReplaceSpace1() {
         String str = "";
