@@ -1,4 +1,4 @@
-package osy.algorithm;
+package inerview3;
 
 /**
  * Created by maxwell on 2016-02-02.

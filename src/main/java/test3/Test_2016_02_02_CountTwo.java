@@ -1,4 +1,4 @@
-package osy.test;
+package test3;
 
 import org.junit.*;
 import osy.algorithm._2016_02_02_CountTwo;
