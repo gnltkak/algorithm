@@ -102,4 +102,15 @@ public class Test_2011_01_17_Intersection {
 		
 		assertEquals(expected, actual);
 	}
+
+    @Test
+    public void testIntersection7() {
+        int[] small = new int[] {1};
+        int[] large = new int[] {1};
+
+        String expected = Util.arrayToString(new int[] {1},"\n");
+        String actual = Util.arrayToString(_2011_01_17_Intersection.intersection(small, large),"\n");
+
+        assertEquals(expected, actual);
+    }
 }

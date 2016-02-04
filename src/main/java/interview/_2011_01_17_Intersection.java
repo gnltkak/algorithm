@@ -20,7 +20,8 @@ import util.Util;
 public class _2011_01_17_Intersection {
 	public static ArrayList<Integer> intersection(int[] small,int[] large) {
 		//return getIntersectionNPlusM(small,large);
-		return getIntersection(small,large);
+		//return getIntersection(small,large);
+        return getIntersection2(small,large);
 	}
 	
 	//O(n+m) 구현
@@ -93,6 +94,90 @@ public class _2011_01_17_Intersection {
 			hashTable[tableIndex] = i;
 		}		
 	}
+	
+	// 2016-02-04 에 추가
+    public static ArrayList<Integer> getIntersection2(int[] small, int[] large) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        
+        int[] searchTable = buildSearchTable(large);
+        
+        for (int i = 0; i < small.length; ++i) {
+            int num = small[i];
+            if (isExistInArr(num, large, searchTable)) {
+                result.add(num);
+            }
+        }
+        
+        return result;
+    }
+
+    private static int[] buildSearchTable(int[] arr) {
+        int n = arr.length;
+        int M = arr[n - 1];
+        int s = n / 10 + 1;
+        int a = M + 1;
+        if (s > 1) { // s > 1 == n >= 10
+            a = M / (n / 10) + 1;
+        }
+        
+        int[] searchTable = new int[s];
+        for (int i = 0; i < searchTable.length; ++i) {
+            searchTable[i] = -1;
+        }
+        int j = 0;
+        for (int i = 0; i < n; ++i) {
+            if (arr[i] / a == j + 1) {
+                searchTable[j++] = i - 1;
+            }
+        }
+        return searchTable;                
+    }
+
+    private static boolean isExistInArr(int num, int[] arr, int[] searchTable) {
+        int n = arr.length;
+        int M = arr[n - 1];
+        int s = n / 10 + 1;
+        int a = M + 1;
+        if (s > 1) { // s > 1 == n >= 10
+            a = M / (n / 10) + 1;
+        }
+        int p = num / a;
+        if (p >= s) {
+            return false;
+        }
+        
+        int r = searchTable[p];
+        int l = 0;
+        if (p >= 1) {
+            l = searchTable[p - 1];
+        }
+        
+        if (l < 0) {
+            for (int i = p - 2; i >= 0; --i) {
+                if (searchTable[i] > 0) {
+                    l = searchTable[i];
+                    break;
+                }
+            }
+            if (l < 0) {  // 왼쪽 끝까지 갔는데 없는 경우
+                l = 0;
+            }
+        }
+        if (r < 0) {
+            for (int i = p + 1; i < searchTable.length; ++i) {
+                if (searchTable[i] > 0) {
+                    r = searchTable[i];
+                    break;
+                }
+            }
+            if (r < 0) {  // 오른쪽 끝까지 갔는데 없는 경우
+                r = n - 1;
+            }
+        }
+        
+       
+        return Util.binarySearch(arr, num, l, r) >= 0;
+    }
 }
 
 /*
