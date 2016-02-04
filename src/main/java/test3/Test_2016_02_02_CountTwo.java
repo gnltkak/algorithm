@@ -1,7 +1,8 @@
 package test3;
 
-import org.junit.*;
-import osy.algorithm._2016_02_02_CountTwo;
+import interview3._2016_02_02_CountTwo;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * Created by maxwell on 2016-02-02.
@@ -10,37 +11,37 @@ public class Test_2016_02_02_CountTwo {
     @Test
     public void testCountTwoA1() {
         int n = 1;        
-        Assert.assertEquals(0, _2016_02_02_CountTwo.countTwo(n));
+        assertEquals(0, _2016_02_02_CountTwo.countTwo(n));
     }
 
     @Test
     public void testCountTwoA2() {
         int n = 2;
-        Assert.assertEquals(1, _2016_02_02_CountTwo.countTwo(n));
+        assertEquals(1, _2016_02_02_CountTwo.countTwo(n));
     }
 
     @Test
     public void testCountTwoA3() {
         int n = 22;
-        Assert.assertEquals(6, _2016_02_02_CountTwo.countTwo(n));
+        assertEquals(6, _2016_02_02_CountTwo.countTwo(n));
     }
 
     @Test
     public void testCountTwoB1() {
         int n = 1;
-        Assert.assertEquals(0, _2016_02_02_CountTwo.countTwo2(n));
+        assertEquals(0, _2016_02_02_CountTwo.countTwo2(n));
     }
 
     @Test
     public void testCountTwoB2() {
         int n = 2;
-        Assert.assertEquals(1, _2016_02_02_CountTwo.countTwo2(n));
+        assertEquals(1, _2016_02_02_CountTwo.countTwo2(n));
     }
 
     @Test
     public void testCountTwoB3() {
         int n = 22;
-        Assert.assertEquals(6, _2016_02_02_CountTwo.countTwo2(n));
+        assertEquals(6, _2016_02_02_CountTwo.countTwo2(n));
     }
 
     @Test
@@ -51,7 +52,7 @@ public class Test_2016_02_02_CountTwo {
                 if (n % 5000 == 0) {
                     System.out.println("n=" + n);
                 }
-                Assert.assertEquals(_2016_02_02_CountTwo.countTwo(n), _2016_02_02_CountTwo.countTwo2(n));
+                assertEquals(_2016_02_02_CountTwo.countTwo(n), _2016_02_02_CountTwo.countTwo2(n));
             }
         } catch(Exception e) {
             System.out.println(e);

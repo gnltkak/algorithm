@@ -1,4 +1,4 @@
-package inerview3;
+package interview3;
 
 /**
  * Created by maxwell on 2016-02-02.

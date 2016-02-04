@@ -1,8 +1,8 @@
 package test3;
 
-import org.junit.Assert;
+import interview3._2016_02_02_ReplaceSpace;
 import org.junit.Test;
-import osy.algorithm._2016_02_02_ReplaceSpace;
+import static org.junit.Assert.*;
 
 /**
  * Created by maxwell on 2016-02-02.
@@ -20,7 +20,7 @@ public class Test_2016_02_02_ReplaceSpace {
 
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
         
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 
     @Test
@@ -118,6 +118,6 @@ public class Test_2016_02_02_ReplaceSpace {
         }
         _2016_02_02_ReplaceSpace.replaceSpace(strArr, str.length());
 
-        Assert.assertEquals(resultTobe, String.copyValueOf(strArr).trim());
+        assertEquals(resultTobe, String.copyValueOf(strArr).trim());
     }
 }
