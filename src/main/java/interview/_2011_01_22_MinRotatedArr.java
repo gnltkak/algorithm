@@ -11,7 +11,7 @@ public class _2011_01_22_MinRotatedArr {
 	}
 
     private static int doFindMin(int[] arr, int l, int r) {
-        if (r - l <= 2) return Math.min(arr[l], arr[r]);
+        if (r - l == 0) return arr[l];
         if (arr[l] < arr[r]) return arr[l]; // 회전이 안 된 경우
         
         int m = (l + r) / 2;
@@ -38,7 +38,7 @@ public class _2011_01_22_MinRotatedArr {
  * 2는 arr[l] > arr[r] > arr[m] 인 경우이므로 [l + 1 , m] 으로 recursive call 하면 된다
  * 3은 arr[l] < arr[r] 인 경우이다. 따라서 arr[l] 을 리턴한다
  *    
- * 위의 case 1, 2 의 구현에 따라 base case 는 원소의 개수가 1개 or 2개 인 경우가 된다    
+ * base case 는 원소의 개수가 1개인 경우가 된다
  *    
  * 문제를 풀 때 다음의 boundary case를 잘 생각해야 한다.
  * 1.rotation 이 전혀 되지 않은 경우
