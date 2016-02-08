@@ -2,7 +2,7 @@ package interview;
 
 /*
  * input : rotated sorted array ( 얼만큼 rotation 됐는지는 주어지지 않는다 )
- *         모든 원소는 distinct 하다. (몇몇 test case가 잘못되었음)
+ *         모든 원소는 distinct 하다. (그렇지 않으면 문제 성립이 안됨 1,1,1,-1,1 이나 1,-1,1,1,1 같은 케이스 때문에)
  * find : minimum element of the array
  */
 public class _2011_01_22_MinRotatedArr {
@@ -10,18 +10,16 @@ public class _2011_01_22_MinRotatedArr {
 		return doFindMin(array,0,array.length-1);
 	}
 
-	private static int doFindMin(int[] array,int l,int r) {		
-		if(l==r)
-			return array[l];
-		if(r-l==1)
-			return Math.min(array[l], array[r]);
-		
-		int m = (l+r)/2;		
-		if(array[m]<=array[r])			
-			return doFindMin(array, l, m);
-		else			
-			return doFindMin(array, m, r);
-	}	
+    private static int doFindMin(int[] arr, int l, int r) {
+        if (r - l <= 2) return Math.min(arr[l], arr[r]);
+        if (arr[l] < arr[r]) return arr[l]; // 회전이 안 된 경우
+        
+        int m = (l + r) / 2;
+        if (arr[m] > arr[r])  // arr[r] 대신 arr[l] 로 해도 상관없음
+            return doFindMin(arr, m + 1, r);
+        else
+            return doFindMin(arr, l + 1, m);
+    }
 }
 
 /*
@@ -31,26 +29,24 @@ public class _2011_01_22_MinRotatedArr {
  * binary search의 핵심은 문제공간의 범위를 점점 줄여나가는 것이므로
  * binary search에서와 마찬가지로 recursive 하게 하고, l,r 값을 두도록 하자.
  * 
- * 우선 a[m]을 취하고 생각한다.
- * 1.a[m]<a[r] 인 경우 : 답은 [l,m] 범위에 있다.
- * 2.a[m]>a[r] 인 경우 : 답은 [m,r] 범위에 있다.
- * 3.a[m]==a[r] 인 경우 : 답은 [l,m] 범위에 있다.
- * 
- * a[l]과 비교해서 판단해도 될 것 같지만 rotation이 하나도 안 된 경우를 생각해보면 안된다는 것을 알 수 있다.
- * 
- * 3번 케이스를 유의!
- * 
- * 여기서 등호가 어디에 들어가는지도 중요하다. 그림을 그려서 생각해보도록 하자.
+ * array 가 rotation되면 array 전체가 A, B 두 파트로 나누어지므로 l,r,m 의 조합은 다음 케이스중 하나가 된다
+ * 1. [l,r] 이 A,B 범위를 모두 커버하고 m 이 A 에 속함
+ * 2. [l,r] 이 A,B 범위를 모두 커버하고 m 이 B 에 속함
+ * 3. [l,r] 이 A,B 범위를 모두 커버하지 않음. 즉, [l,r] 은 rotation 되지 않음
+ *
+ * 1은 arr[m] > arr[l] > arr[r] 인 경우이므로 [m + 1, r] 로 recursive call 하면 된다
+ * 2는 arr[l] > arr[r] > arr[m] 인 경우이므로 [l + 1 , m] 으로 recursive call 하면 된다
+ * 3은 arr[l] < arr[r] 인 경우이다
  *    
- *  이제 base case를 생각해보자.
- *  1.l==r 이면 그냥 a[l] 을 리턴하면 된다.
- *  2.r-l==1 이면 min(a[l],a[r])을 리턴하면 된다.
- *    왜 이런 처리가 필요하냐면, 우리가 m을 계산할 때 (l+r)/2 로 계산했기 때문이다.
- *    원소의 개수가 2개라면 m은 l과 같아지게 되는데, [m,r] 범위에서 계속 call이 일어나게 되면 stackoverflow가 된다.
+ * 위의 case 1, 2 의 구현에 따라 base case 는 원소의 개수가 1개 or 2개 인 경우가 된다    
  *    
  * 문제를 풀 때 다음의 boundary case를 잘 생각해야 한다.
  * 1.rotation 이 전혀 되지 않은 경우
  * 2.rotation 이 완전히 된 경우 ( array가 뒤집힌 경우 )
  * 3.원소의 개수가 1개인 경우
- * 4.같은 원소만으로 가득찬 경우
+ * 
+ * (2016-02-08 추가)
+ * 보다 직관적으로 생각하면 쉽다
+ * 우선 array가 rotation 된 모양을 생각하자.
+ * 
  */
