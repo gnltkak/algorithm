@@ -44,7 +44,38 @@ public class _2011_01_21_Combination {
 			doMakeCombination(array, k-1, i+1, used);
 			used[i] = false;
 		}
-	}	
+	}
+	
+	public static String makeCombination2(int[] arr, int k) {
+        result = new StringBuffer();
+        boolean[] used = new boolean[arr.length];
+        doMakeCombination2(arr, 0, k, used);
+        return result.toString();
+	}
+
+    private static void doMakeCombination2(int[] arr, int l, int k, boolean[] used) {
+        int n = arr.length;
+        if (k == 0) {
+            for(int i = 0; i < n; ++i) {
+                if (used[i]) {
+                    result.append(arr[i]);
+                    result.append(",");
+                }
+            }
+            if (result.length() > 0) {
+                result.deleteCharAt(result.length() - 1); //맨뒤의 , 를 삭제
+                result.append('\n');
+            }
+            return;
+        }
+        
+        if (l == n) return;
+        
+        used[l] = true;
+        doMakeCombination2(arr, l + 1, k - 1, used);
+        used[l] = false;
+        doMakeCombination2(arr, l + 1, k, used);
+    }
 }
 
 /*
@@ -68,4 +99,7 @@ public class _2011_01_21_Combination {
  * bitmap을 사용하면 input size에 무관하게 처리할 수 있다.
  * (단, bitmap에 +1 하는 연산을 추가해야 한다)
  * bitmap 까지 쓰지 않더라도 long을 사용하면 64개는 되니까 충분하다고 생각한다.
+ * 
+ * (추가) 2016-02-08
+ * 보다 직관적인 알고리즘 추가
  */
