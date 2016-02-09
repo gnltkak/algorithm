@@ -157,4 +157,65 @@ public class Test_2011_01_28_NextLargeSmallSameBitOne {
 			assertEquals(expected,actual);
 		}
 	}
+
+	@Test
+	public void testNextLarge6() {
+		int n = 0x5;
+		int expected = 0x6;
+		int actual = _2011_01_28_NextLargeSmallSameBitOne.nextLarge2(n);
+		assertEquals(expected,actual);
+	}
+
+	@Test
+	public void testNextLarge7() {
+		int n = 0x8;
+		int expected = 0x10;
+		int actual = _2011_01_28_NextLargeSmallSameBitOne.nextLarge2(n);
+		assertEquals(expected,actual);
+	}
+
+	@Test
+	public void testNextLarge8() {
+		int n = 0xb;
+		int expected = 0xd;
+		int actual = _2011_01_28_NextLargeSmallSameBitOne.nextLarge2(n);
+		assertEquals(expected,actual);
+	}
+
+	@Test
+	public void testNextLarge9() {
+		int n = 0x1c;
+		int expected = 0x23;
+		int actual = _2011_01_28_NextLargeSmallSameBitOne.nextLarge2(n);
+		assertEquals(expected,actual);
+	}
+
+	@Test
+	public void testNextLarge10() {
+		int[] n = Util.makeRandIntArr(1000, Integer.MAX_VALUE, true);
+
+		for(int i=0;i<n.length;i++)
+		{
+			//i가 valid 한지 검사
+			boolean valid = true;
+
+			for(int j=0;j<=31;j++)
+			{
+				int invalid1 = (1<<j)-1;
+				int invalid2 = ~invalid1;
+
+				if(n[i]==invalid1 || n[i]==invalid2)
+				{
+					valid = false;
+					break;
+				}
+			}
+			if(!valid)
+				continue;
+
+			int expected = nextLargeNaive(n[i]);
+			int actual = _2011_01_28_NextLargeSmallSameBitOne.nextLarge2(n[i]);
+			assertEquals(expected,actual);
+		}
+	}
 }

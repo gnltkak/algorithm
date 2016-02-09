@@ -214,6 +214,25 @@ public class _2011_01_28_NextLargeSmallSameBitOne {
 		
 		return n;
 	}
+	
+	// 2016.2.9 추가
+    public static int nextLarge3(int num) {
+        int k = 0;
+        while ((num & (1 << k)) == 0) ++k;
+        int s = 0;
+        while ((num & (1 << k)) != 0) {
+            ++k;
+            ++s;
+        }
+        int p = k;
+        
+        num = num | 1 << p;
+        num = num & ~(1 << (p - 1));
+        num = num & ~(1 << (p - 1) - 1);                
+        num = num & (1 << s - 1);
+        
+        return num;
+    }
 }
 
 /*
