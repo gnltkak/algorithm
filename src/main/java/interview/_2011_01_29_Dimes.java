@@ -28,6 +28,24 @@ public class _2011_01_29_Dimes {
 		
 		return ways;
 	}
+
+    // 추가 (2016-02-09)
+	public static int moneyWays2(int n) {
+		int count = 0;
+        int remain = n;
+        for (int i = 0; i <= remain / 25; ++i) {
+            remain -= 25 * i;
+            for (int j = 0; j <= remain / 10; ++j) {
+                remain -= 10 * j;
+                for (int k = 0; k <= remain / 5; ++k) {
+                    ++count;
+                }
+                remain += 10 *j;
+            }
+            remain += 25 * i;
+        }
+        return count;
+	}
 }
 
 /*
