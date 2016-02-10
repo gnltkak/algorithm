@@ -87,7 +87,7 @@ public class _2011_01_31_ParenComb {
 			paren[currPos]=')';
 			doParenCombOptimal2(paren,lpCnt,rpCnt-1,currPos+1);
 		}
-	}	
+	}
 }
 
 /*
