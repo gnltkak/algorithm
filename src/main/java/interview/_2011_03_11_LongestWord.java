@@ -97,7 +97,6 @@ public class _2011_03_11_LongestWord {
 }
 
 class StrLenComparator implements Comparator<String> {
-	@Override
 	public int compare(String o1, String o2) {
 		if(o1.length()==o2.length())
 			return 0;
