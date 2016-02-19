@@ -1,7 +1,9 @@
 package interview;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 /*
  * 숫자 야구 게임.
@@ -95,6 +97,35 @@ public class _2011_03_08_MasterMind {
 		
 		return hit + "," + pHit;
 	}
+
+	public static String masterMind3(String solution, String guess) {
+        // R, G, B, Y -> 0, 1, 2, 3
+        int[] countSolution = new int[4];
+        int[] countGuess = new int[4];
+        
+        int hit = 0;
+        int pHit = 0;
+        
+        for (int i = 0; i < solution.length(); ++i) {
+            char solChar = solution.charAt(i);
+            char guessChar = guess.charAt(i);
+            
+            if (solChar == guessChar) {
+                ++hit;
+            } else {
+                ++countSolution[toInt(solChar)];
+                ++countGuess[toInt(guessChar)];
+            }
+        }
+        
+        for (int i = 0; i < countSolution.length; ++i) {
+            if (countGuess[i] > 0) {
+                pHit = pHit + countSolution[i];
+            }
+        }
+
+        return hit + "," + pHit;
+    }
 }
 
 /*
