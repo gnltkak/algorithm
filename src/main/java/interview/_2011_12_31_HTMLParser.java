@@ -18,7 +18,8 @@ import java.util.Stack;
  */
 public class _2011_12_31_HTMLParser {
 	public static boolean isValidHTML(String text) {
-		return isValidHTML2012_11_05(text);
+		//return isValidHTML2012_11_05(text);
+        return isValidHTML2016_03_04(text);
 		
 		/*
 		Stack<String> st = new Stack<String>();
@@ -109,6 +110,55 @@ public class _2011_12_31_HTMLParser {
 			return j;
 		}
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	private static boolean isValidHTML2016_03_04(String text) {
+		int n = text.length();
+        Stack<String> tagStack = new Stack<String>();
+        int i = 0;
+        while (i < n) {
+            char ch = text.charAt(i);
+            if (ch == '<') {
+                i = parseTagName(text, i, tagStack);
+                if (i < 0) {
+                    return false;
+                }                
+            } else if (ch == '>') {
+                return false;
+            } else {
+                if (tagStack.empty()) return false;
+                ++i;
+            }
+        }
+        return tagStack.size() == 0;
+	}
+
+    private static int parseTagName(String text, int s, Stack<String> tagStack) {
+        boolean close = false;
+        int n = text.length();
+        int l = s + 1;
+        int r = l;
+        if (l == n) return -1;
+        if (text.charAt(l) == '/') {
+            ++l;
+            r = l;
+            close = true;
+        }
+        while (l < n && r < n) {
+            if (text.charAt(r) == '>') break;
+            ++r;
+        }
+        if (l == r || r == n) return -1;
+        String tagName = text.substring(l, r);
+        if (!close) {
+            tagStack.push(tagName);
+        } else {
+            if (tagStack.empty()) return -1;
+            String openedTagName = tagStack.pop();
+            if (!openedTagName.equals(tagName)) return -1;            
+        }
+        return r + 1;
+    }
 }
 
 /*

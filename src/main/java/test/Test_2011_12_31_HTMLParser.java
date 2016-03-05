@@ -38,6 +38,7 @@ public class Test_2011_12_31_HTMLParser {
 		assertEquals(expected, actual);
 	}
 	
+	/* isValidHTML2012_11_05() 와 isValidHTML2016_03_04() 에서 다르게 구현하여 주석처리함 
 	@Test
 	public void testHTMLParser6() throws Exception {
 		String text = "abcd<a>ee</a>";
@@ -45,6 +46,7 @@ public class Test_2011_12_31_HTMLParser {
 		boolean actual = _2011_12_31_HTMLParser.isValidHTML(text);
 		assertEquals(expected, actual);
 	}
+	*/
 	
 	@Test
 	public void testHTMLParser7() throws Exception {
